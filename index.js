@@ -1,12 +1,14 @@
+require('dotenv').config()
 const express = require('express')
-//require('dotenv').config()
 const app = express()
 app.use(express.json())
 app.use(express.static('dist'))
 const cors = require('cors')
 app.use(cors())
 
-const Person = require('./models/note')
+
+const Person = require('./models/note');
+
 app.get('/persons', (request, response) => {
   Person.find({}).then(persons => {
     response.json(persons)
